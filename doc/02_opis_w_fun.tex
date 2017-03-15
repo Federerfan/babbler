@@ -1,0 +1,20 @@
+\section{Opis wymagań funkcjonalnych}
+Ten rozdział opisuje wymagania funkcjonalne projektowanych aplikacji. Wymagania dotyczą danych obszarów działania oraz związane są z aktorami (zewnętrzny obiekt wchodzący w interakcję z systemem). System będzie się składał z dwóch głównych części: klienta i serwera. Wymagania zebrano w tabeli \ref{tab:wymfun}.
+
+\begin{table}[!hbp]
+	\centering
+	\caption{Wymagania funkcjonalne aplikacji.}
+	\label{tab:wymfun}
+	\begin{tabular}{|r|p{0.26\linewidth}|p{0.5\linewidth}|p{0.2\linewidth}|} \hline
+		\multicolumn{1}{|c|}{\textbf{Lp.}} & \multicolumn{1}{|c|}{\textbf{Obszar działania}} & \multicolumn{1}{|c|}{\textbf{Wymagania funkcjonalne}} & \multicolumn{1}{|c|}{\textbf{Aktor}} \\ \hline
+		1. & Rejestracja & Użytkownik może zarejestrować się na serwerze. Wymagane do rejestracji będą: nazwa użytkownika, adres e-mail i hasło. & Użytkownik, Baza Danych, Serwer \\ \hline
+		2. & Logowanie & Aby się komunikować, użytkownik musi zalogować się na serwerze korzystając z kombinacji loginu i hasła & Użytkownik anonimowy, Baza Danych, Serwer\\ \hline
+		3. & Dołączenie do kanału & Na serwerze może być prowadzone wiele rozmów jednocześnie. Użytkownik dołącza do kanału, na którym chce prowadzić rozmowę. & Użytkownik standardowy, Baza Danych, Serwer\\ \hline
+		4. & Nadawanie dźwięku & Nadawanie głosu rozpoczyna się z chwilą przyciśnięcia zdefiniowanego przycisku lub w trybie ciągłym, z chwilą połączenia do kanału. Transmisja odbywa się do serwera usługi. & Użytkownik standardowy, Serwer\\ \hline
+		5. & Odbieranie dźwięku & Serwer wysyła do klientów dźwięk. & Użytkownik standardowy, Serwer\\ \hline
+		6. & Usuwanie użytkownika z kanału & Użytkowników naruszających zasady ustalone przez administratora serwera i/lub kanału można usunąć z konwersacji. & Moderator / Administrator\\ \hline
+		7. & Banowanie użytkownika & Użytkowników rażąco naruszających zasady można całkowicie zablokować. & Administrator\\ \hline
+		8. & Utworzenie kanału tymczasowego & Użytkownik może stworzyć własny kanał. Przy tworzeniu może zdefiniować przepływność kodeka używana na kanale. Kanał jest usuwany automatycznie w momencie opuszczenia go przez ostatniego użytkownika. & Użytkownik standardowy\\ \hline
+		9. & Utworzenie kanału permanentnego & Administrator może przekształcić kanał tymczasowy na permanentny na prośbę użytkownika. & Administrator, Użytkownik standardowy \\ \hline
+	\end{tabular}
+\end{table}

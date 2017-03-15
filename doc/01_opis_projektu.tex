@@ -1,0 +1,6 @@
+\section{Opis projektu}
+Projekt ma na celu utworzenie komunikatora głosowego, który pozwoli na jednoczesną rozmowę wielu osób. Całość będzie działała w oparciu o architekturę klient-serwer, zarówno do sygnalizacji oraz połączeń. Ma to związek z czysto konferencyjną naturą komunikatora -- użytkownik łącząc się na serwer będzie musiał dołączyć do konkretnego kanału, aby móc rozmawiać.
+
+Główny przebieg pracy z aplikacją będzie następujący: klient połączy się z serwerem, korzystając z własnych danych logowania. Serwer dokona uwierzytelnienia użytkownika i, jeśli proces się powiedzie, pozwoli na przegląd listy kanałów na serwerze. Następnie użytkownik będzie mógł dołączyć do kanału, aby móc rozmawiać. Wysyłanie głosu będzie w sposób ciągły lub w trybie PTT (ang. \textit{push-to-talk}) -- naciśnij, aby mówić. Serwer odbierając powyższą transmisję, będzie ją rozsyłał do pozostałych uczestników czatu.
+
+W projekcie wykorzystany zostanie nowoczesny kodek audio Opus, który pozwala na transmisję wysokiej jakości dźwięku, przy jednocześnie małych opóźnieniach. Aplikacja serwera zostanie napisana w języku Python lub C++, z naciskiem na poprawną pracę pod systemem Linux. Część kliencka powstanie w oparciu o język C\# i platformę .NET Framework w wersji 4.5.
