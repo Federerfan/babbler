@@ -1,5 +1,8 @@
 \section{Opis wymagań funkcjonalnych}
-Ten rozdział opisuje wymagania funkcjonalne projektowanych aplikacji. Zebrane wymagania dotyczą poszczególnych obszarów działania komunikatora i powiązane są z aktorami (użytkownikami systemu). Głównych aktorów występujących w systemie przedstawia Tabela \ref{tab:aktorzy}.
+Ten rozdział opisuje wymagania funkcjonalne projektowanego komunikatora. Głównych
+aktorów występujących w systemie przedstawia Tabela \ref{tab:aktorzy}. Aktorzy
+zostali przedstawieni w sposób hierarchiczny, względem rosnących uprawnień.
+Dodatkowo, dla użytkowników zalogowanych na serwerze, uprawnienia są dziedziczone.
 
 \begin{table}[!hbp]
 	\centering
@@ -7,27 +10,75 @@ Ten rozdział opisuje wymagania funkcjonalne projektowanych aplikacji. Zebrane w
 	\label{tab:aktorzy}
 	\begin{tabular}{|r|l|} \hline
 		\multicolumn{1}{|c|}{\textbf{Lp.}} & \multicolumn{1}{|c|}{\textbf{Aktor}} \\ \hline
-		1. & Użytkownik niezalogowany \\ \hline
-		2. & Użytkownik standardowy \\ \hline
+		1. & Użytkownik niezalogowany \\ \hline \hline
+		2. & Użytkownik zalogowany \\ \hline
 		3. & Operator kanału \\ \hline
 		4. & Administrator serwera \\ \hline
 	\end{tabular}
 \end{table}
 
-\begin{table}[!hbp]
-	\centering
+Wymagania funkcjonalne projektowanego komunikatora zaprezentowano w Tabeli
+\ref{tab:wymfun}. Zebrane wymagania dotyczą poszczególnych obszarów działania
+komunikatora i powiązane są z podanymi powyżej aktorami (użytkownikami systemu).
+
+\begin{longtabu} to \linewidth {|r|p{3.45cm}|X|p{2.6cm}|}
 	\caption{Wymagania funkcjonalne aplikacji.}
-	\label{tab:wymfun}
-	\begin{tabular}{|r|p{0.26\linewidth}|p{0.5\linewidth}|p{0.2\linewidth}|} \hline
-		\multicolumn{1}{|c|}{\textbf{Lp.}} & \multicolumn{1}{|c|}{\textbf{Obszar działania}} & \multicolumn{1}{|c|}{\textbf{Wymagania funkcjonalne}} & \multicolumn{1}{|c|}{\textbf{Aktor}} \\ \hline
-		1. & Rejestracja & Użytkownik może zarejestrować się na serwerze. Wymagane do rejestracji będą: nazwa użytkownika, adres e-mail i hasło. & Użytkownik, Baza Danych, Serwer \\ \hline
-		2. & Logowanie & Aby się komunikować, użytkownik musi zalogować się na serwerze korzystając z kombinacji loginu i hasła & Użytkownik anonimowy, Baza Danych, Serwer\\ \hline
-		3. & Dołączenie do kanału & Na serwerze może być prowadzone wiele rozmów jednocześnie. Użytkownik dołącza do kanału, na którym chce prowadzić rozmowę. & Użytkownik standardowy, Baza Danych, Serwer\\ \hline
-		4. & Nadawanie dźwięku & Nadawanie głosu rozpoczyna się z chwilą przyciśnięcia zdefiniowanego przycisku lub w trybie ciągłym, z chwilą połączenia do kanału. Transmisja odbywa się do serwera usługi. & Użytkownik standardowy, Serwer\\ \hline
-		5. & Odbieranie dźwięku & Serwer wysyła do klientów dźwięk. & Użytkownik standardowy, Serwer\\ \hline
-		6. & Usuwanie użytkownika z kanału & Użytkowników naruszających zasady ustalone przez administratora serwera i/lub kanału można usunąć z konwersacji. & Moderator / Administrator\\ \hline
-		7. & Banowanie użytkownika & Użytkowników rażąco naruszających zasady można całkowicie zablokować. & Administrator\\ \hline
-		8. & Utworzenie kanału tymczasowego & Użytkownik może stworzyć własny kanał. Przy tworzeniu może zdefiniować przepływność kodeka używana na kanale. Kanał jest usuwany automatycznie w momencie opuszczenia go przez ostatniego użytkownika. & Użytkownik standardowy\\ \hline
-		9. & Utworzenie kanału permanentnego & Administrator może przekształcić kanał tymczasowy na permanentny na prośbę użytkownika. & Administrator, Użytkownik standardowy \\ \hline
-	\end{tabular}
-\end{table}
+	\label{tab:wymfun} \\
+	
+	\hline
+	\rowfont\bfseries Lp. & Obszar działania & Wymagania funkcjonalne & Aktor \\ \hline
+	\endhead
+	\endfoot
+	\endlastfoot
+
+	1.&
+	Autoryzacja &
+	Każdy użytkownik musi zarejestrować się na serwerze. Wymagane do
+	rejestracji są: nazwa użytkownika, adres e-mail i hasło. &
+	Użytkownik niezalogowany \\ \cline{1-1} \cline{3-4}
+	
+	2.&
+	&
+	Użytkownik loguje się na serwerze korzystając z własnego loginu i hasła &
+	Użytkownik niezalogowany\\ \hline
+	
+	3.&
+	Operacje na kanałach &
+	Na serwerze może być prowadzone wiele rozmów jednocześnie. Użytkownik
+	dołącza do kanału, na którym chce prowadzić rozmowę. &
+	Użytkownik standardowy, Baza Danych, Serwer\\ \hline
+	
+	4.&
+	Nadawanie dźwięku &
+	Nadawanie głosu rozpoczyna się z chwilą przyciśnięcia zdefiniowanego
+	przycisku lub w trybie ciągłym, z chwilą połączenia do kanału. Transmisja
+	odbywa się do serwera usługi. &
+	Użytkownik standardowy, Serwer\\ \hline
+	
+	5.&
+	Odbieranie dźwięku & Serwer wysyła do klientów dźwięk. &
+	Użytkownik standardowy, Serwer\\ \hline
+	
+	6.&
+	Usuwanie użytkownika z kanału & Użytkowników naruszających zasady ustalone
+	przez administratora serwera i/lub kanału można usunąć z konwersacji. &
+	Moderator / Administrator\\ \hline
+	
+	7.&
+	Banowanie użytkownika &
+	Użytkowników rażąco naruszających zasady można całkowicie zablokować. &
+	Administrator\\ \hline
+	
+	8.&
+	Utworzenie kanału tymczasowego &
+	Użytkownik może stworzyć własny kanał. Przy tworzeniu może zdefiniować
+	przepływność kodeka używana na kanale. Kanał jest usuwany automatycznie w
+	momencie opuszczenia go przez ostatniego użytkownika. &
+	Użytkownik standardowy\\ \hline
+	
+	9.&
+	Utworzenie kanału permanentnego &
+	Administrator może przekształcić kanał tymczasowy na permanentny na prośbę
+	użytkownika. &
+	Administrator, Użytkownik standardowy \\ \hline
+\end{longtabu}
