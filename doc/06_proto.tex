@@ -1,0 +1,48 @@
+\section {Protokół komunikacyjny}
+W tym rozdziale przedstawiono protokół komunikacyjny, który będzie stosowany
+do komunikacji pomiędzy klientem, a serwerem. Dla łatwiejszej analizy
+przesyłanych pakietów wykorzystany zostanie protokół tekstowy wysyłany w formie
+pakietów TCP, częściowo bazujący na protokole SIP.
+
+Komunikat składa się z linii wprowadzającej zawierającej informację o~wysyłanym
+komunikacie oraz wersji protokołu. Następnie znajdują się pola nadawcy
+i~odbiorcy. Na końcu mogą znaleźć się opcjonalne pola, które zależne będą
+od rodzaju komunikatu. Komunikat zawsze kończy się dwoma znakami nowej
+linii w systemie Windows (kody ASCII \texttt{13} i \texttt{10})
+
+Dla przejrzystości, komunikaty żądań oraz odpowiedzi opisano w~osobnych
+poddziałach przedstawionych poniżej.
+
+\subsection{Komunikaty żądań}
+W~tej sekcji przedstawiono żądania wchodzące w skład projektowanego protokołu.
+Spis komunikatów, wraz z krótkim odpisem zaprezentowano w Tabeli \ref{tab:requests}
+
+\begin{longtabu} to \linewidth {|>{\raggedright}r|>{\raggedright}p{2.65cm}|>{\raggedright\arraybackslash}X|}
+	\caption{Wymagania funkcjonalne aplikacji.}
+	\label{tab:requests} \\
+	
+	\hline
+	\rowfont\bfseries Lp. & Komunikat & Opis \\ \hline
+	\endhead
+	\endfoot
+	\endlastfoot
+	
+	1. & REGISTER & Rejestracja na serwerze za pomocą podanego loginu i~hasła   \\ \hline
+	2. & CONNECT & Logowanie na serwerze przy użyciu loginu i~hasła  \\ \hline
+	3. & DISCONNECT & Rejestracja na serwerze za pomocą podanego loginu i~hasła   \\ \hline
+	4. & OPTIONS & Wyświetla informacje o~wybranym kanale. \\ \hline
+	5. & JOIN & Próba dołączenia do kanału. \\ \hline
+	6. & LEAVE & Opuszczenie rozmowy. \\ \hline
+	7. & CHKICK & Wyrzucenie użytkownika z kanału. \\ \hline
+	8. & SRKICK & Wyrzucenie użytkownika z serwera. \\ \hline
+\end{longtabu}
+
+\subsection{Komunikaty odpowiedzi}
+Żądania w protokole oczekują odpowiedzi. Skorzystano ze sprawdzonego
+w~protokołach tekstowych schematu numerowania. Charakterystykę ogólną
+przedstawiono na poniższym wykazie.
+\begin{itemize}
+	\item 200 -- odpowiedzi prawidłowe
+	\item 400 -- błędy spowodowane przez użytkownika
+	\item 500 -- błędy spowodowane przez serwer
+\end{itemize}
